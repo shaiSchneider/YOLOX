@@ -221,4 +221,4 @@ events.out.tfevents*
 .vim
 
 # venv
-venv_yolox/
+yolox_venv/
