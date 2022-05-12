@@ -16,7 +16,7 @@ from yolox.data.datasets import COCO_CLASSES
 from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
-IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
+IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png", ".PNG"]
 
 
 def make_parser():
@@ -52,6 +52,7 @@ def make_parser():
         type=str,
         help="device to run our model, can either be cpu or gpu",
     )
+    parser.add_argument('--cls_names', nargs='+', type=str, default=None)
     parser.add_argument("--conf", default=0.3, type=float, help="test conf")
     parser.add_argument("--nms", default=0.3, type=float, help="test nms threshold")
     parser.add_argument("--tsize", default=None, type=int, help="test img size")
@@ -302,8 +303,13 @@ def main(exp, args):
         trt_file = None
         decoder = None
 
+    if args.cls_names is None:
+        cls_names = COCO_CLASSES
+    else:
+        cls_names = tuple(args.cls_names)
+
     predictor = Predictor(
-        model, exp, COCO_CLASSES, trt_file, decoder,
+        model, exp, cls_names, trt_file, decoder,
         args.device, args.fp16, args.legacy,
     )
     current_time = time.localtime()

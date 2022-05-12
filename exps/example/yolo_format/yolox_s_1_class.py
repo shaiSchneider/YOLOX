@@ -30,7 +30,7 @@ class Exp(MyExp):
         self.max_epoch = 50
 
         # if set to 1, model will be evaluate after every epoch.
-        self.eval_interval = 100
+        self.eval_interval = 1
         # epoch number used for warmup
         self.warmup_epochs = 0
 

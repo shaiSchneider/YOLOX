@@ -9,8 +9,8 @@ from yolox.exp import Exp as MyExp
 class Exp(MyExp):
     def __init__(self):
         super(Exp, self).__init__()
-        self.depth = 0.33
-        self.width = 0.50
+        self.depth = 0.67
+        self.width = 0.75
         self.exp_name = os.path.split(os.path.realpath(__file__))[1].split(".")[0]
 
         # Define yourself dataset path
@@ -24,11 +24,11 @@ class Exp(MyExp):
 
         # --------------- transform config ----------------- #
         # prob of applying mosaic aug
-        self.mosaic_prob = 0.5
+        self.mosaic_prob = 0.0
         # prob of applying mixup aug
         self.mixup_prob = 0.0
         # prob of applying hsv aug
-        self.hsv_prob = 1.0
+        self.hsv_prob = 0.5
         # prob of applying flip aug
         self.flip_prob = 0.5
         # rotation angle range, for example, if set to 2, the true range is (-2, 2)
@@ -40,7 +40,7 @@ class Exp(MyExp):
         self.enable_mixup = False
         self.mixup_scale = (0.5, 1.5)
         # shear angle range, for example, if set to 2, the true range is (-2, 2)
-        self.shear = 2.0
+        self.shear = 0.0
 
         # --------------  training config --------------------- #
         # epoch number used for warmup

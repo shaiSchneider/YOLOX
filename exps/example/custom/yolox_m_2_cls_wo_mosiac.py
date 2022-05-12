@@ -4,31 +4,33 @@
 import os
 
 from yolox.exp import Exp as MyExp
+import torch.nn as nn
+import torch
 
 
 class Exp(MyExp):
     def __init__(self):
         super(Exp, self).__init__()
-        self.depth = 0.33
-        self.width = 0.50
+        self.depth = 0.67
+        self.width = 0.75
         self.exp_name = os.path.split(os.path.realpath(__file__))[1].split(".")[0]
 
         # Define yourself dataset path
-        self.data_dir = "/home/shai/Desktop/lifeguard_data/sanity_check_yolov5_COCO_format"
+        self.data_dir = "/home/shai/Desktop/lifeguard_data/v04_yolov5_format_COCO_format_2_cls"
         self.train_ann = "instances_train2017.json"
         self.val_ann = "instances_val2017.json"
 
-        self.num_classes = 1
+        self.num_classes = 2
 
         self.data_num_workers = 4
 
         # --------------- transform config ----------------- #
         # prob of applying mosaic aug
-        self.mosaic_prob = 0.5
+        self.mosaic_prob = 0.0
         # prob of applying mixup aug
         self.mixup_prob = 0.0
         # prob of applying hsv aug
-        self.hsv_prob = 1.0
+        self.hsv_prob = 0.5
         # prob of applying flip aug
         self.flip_prob = 0.5
         # rotation angle range, for example, if set to 2, the true range is (-2, 2)
@@ -40,13 +42,15 @@ class Exp(MyExp):
         self.enable_mixup = False
         self.mixup_scale = (0.5, 1.5)
         # shear angle range, for example, if set to 2, the true range is (-2, 2)
-        self.shear = 2.0
+        self.shear = 0.0
 
         # --------------  training config --------------------- #
+        # use mosaic aug
+        self.no_aug = True
         # epoch number used for warmup
         self.warmup_epochs = 5
         # max training epoch
-        self.max_epoch = 100
+        self.max_epoch = 50
         # minimum learning rate during warmup
         self.warmup_lr = 0
         self.min_lr_ratio = 0.05
