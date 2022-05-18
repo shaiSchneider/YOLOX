@@ -14,7 +14,7 @@ class Exp(MyExp):
         self.exp_name = os.path.split(os.path.realpath(__file__))[1].split(".")[0]
 
         # Define yourself dataset path
-        self.data_dir = "/home/shai/Desktop/lifeguard_data/sanity_check_yolov5_COCO_format"
+        self.data_dir = "/home/shai/Desktop/lifeguard_data/v04_yolov5_format_COCO_format_1_cls"
         self.train_ann = "instances_train2017.json"
         self.val_ann = "instances_val2017.json"
 

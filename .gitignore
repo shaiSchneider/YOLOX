@@ -222,3 +222,6 @@ events.out.tfevents*
 
 # venv
 yolox_venv/
+
+#wandb
+wandb/
